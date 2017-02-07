@@ -1,0 +1,357 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+
+
+
+%\usepackage[active]{srcltx} % SRC Specials for DVI Searching
+
+% Over-full v-boxes on even pages are due to the \v{c} in author's name
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+
+% THEOREM Environments ---------------------------------------------------
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{prop}[thm]{Proposition}
+ %\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ %\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \numberwithin{equation}{section}
+% MATH -------------------------------------------------------------------
+ \DeclareMathOperator{\RE}{Re}
+ \DeclareMathOperator{\IM}{Im}
+ \DeclareMathOperator{\ess}{ess}
+ \newcommand{\eps}{\varepsilon}
+ \newcommand{\To}{\longrightarrow}
+ \newcommand{\h}{\mathcal{H}}
+ \newcommand{\s}{\mathcal{S}}
+ \newcommand{\A}{\mathcal{A}}
+ \newcommand{\J}{\mathcal{J}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\BOP}{\mathbf{B}}
+ \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+ \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+ \newcommand{\Real}{\mathbb{R}}
+ \newcommand{\Complex}{\mathbb{C}}
+ \newcommand{\Field}{\mathbb{F}}
+ \newcommand{\RPlus}{\Real^{+}}
+ \newcommand{\Polar}{\mathcal{P}_{\s}}
+ \newcommand{\Poly}{\mathcal{P}(E)}
+ \newcommand{\EssD}{\mathcal{D}}
+ \newcommand{\Lom}{\mathcal{L}}
+ \newcommand{\States}{\mathcal{T}}
+ \newcommand{\abs}[1]{\left\vert#1\right\vert}
+ \newcommand{\set}[1]{\left\{#1\right\}}
+ \newcommand{\seq}[1]{\left<#1\right>}
+ \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+ \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Fri Nov 02 10:44:42 2001}
+%TCIDATA{LastRevised=Mon Dec 10 11:56:49 2001}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand\refname{}
+\renewcommand\thefootnote{}
+\textheight=9in \topmargin=-0.6in \everymath{\displaystyle}
+\textwidth=6.5in \oddsidemargin=0.05in
+\renewcommand\arraystretch{1.5}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+\includeonly{}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage[bw]{mcode}
+\usepackage{listings}
+\usepackage{multicol}
+\everymath{\displaystyle}
+\begin{document}
+
+{\large\bf MATH-6600, CLA Problem Set No. 7, 11-12-15}
+
+
+
+\vspace{6 ex}
+
+{\bf Name: Michael Hennessey} \hfill
+
+\vspace{6 ex}
+
+\begin{enumerate}
+\item Derive a block LU decomposition assuming no pivoting of a block tridiagonal matrix $D$. What are the conditions you need for this LU decomposition to exist?\\
+
+Solution:\\
+
+We can essentially use the Gaussian Elimination (GE) algorithm without pivoting to compute the block LU factorization. We can begin by eliminating $A_2$:
+$$\left[\begin{array}{ccccc}I&&&&\\F&I&&&\\&&I&&\\&&&\ddots&\\&&&&I\end{array}\right]\left[\begin{array}{ccccc}B_1&C_1&&&\\A_2&B_2&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right]=\left[\begin{array}{ccccc}B_1&C_1&&&\\0&B_2+FC_1&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right]$$
+Then
+$$FB_1+A_2=0\implies F=-A_2B_1^{-1}.$$
+This gives the first step of the block LU factorization:
+$$L_1^{-1}D=U_1\implies$$
+$$\left[\begin{array}{ccccc}I&&&&\\-A_2B_1^{-1}&I&&&\\&&I&&\\&&&\ddots&\\&&&&I\end{array}\right]\left[\begin{array}{ccccc}B_1&C_1&&&\\A_2&B_2&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right]=\left[\begin{array}{ccccc}B_1&C_1&&&\\0&B_2-A_2B_1^{-1}C_1&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right].$$
+
+We can multiply both sides by
+$$L_1=\left[\begin{array}{ccccc}I&&&&\\A_2B_1^{-1}&I&&&\\&&I&&\\&&&\ddots&\\&&&&I\end{array}\right]$$
+to get the $D=LU$ form, just as in the non-block case.
+$$\left[\begin{array}{ccccc}B_1&C_1&&&\\A_2&B_2&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right]=\left[\begin{array}{ccccc}I&&&&\\A_2B_1^{-1}&I&&&\\&&I&&\\&&&\ddots&\\&&&&I\end{array}\right]\left[\begin{array}{ccccc}B_1&C_1&&&\\0&B_2-A_2B_1^{-1}C_1&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right]$$
+Then continuing on in this fashion will result in the block LU decomposition:
+\[\scalemath{0.8}{\left[\begin{array}{ccccc}B_1&C_1&&&\\A_2&B_2&C_2&&\\&A_3&B_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&A_n&B_n\end{array}\right]=\left[\begin{array}{ccccc}I&&&&\\A_2B_1^{-1}&I&&&\\&(B_2-A_2B_1^{-1}C_1)^{-1}&I&&\\&&\ddots&\ddots&\\&&&\tilde{B}_n&I\end{array}\right]\left[\begin{array}{ccccc}B_1&C_1&&&\\0&B_2-A_2B_1^{-1}C_1&C_2&&\\&0&\tilde{B}_3&C_3&\\&&\ddots&\ddots&\ddots\\&&&&\tilde{B}_n\end{array}\right]}\]
+where $\tilde{B}_j$ is defined thus:
+$$\tilde{B}_j=B_j-A_j(B_{j-1}-A_{j-1}(B_{j-2}-...-A_2B_1^{-1}C_1)^{-1}C_2)^{-1}...C_{j-2})^{-1}C_{j-1}.$$
+Therefore, for the block LU decomposition to exist, the diagonal elements $\tilde{B_j}$ must be invertible for $j=1,...,n-1$.\\
+
+\item Suppose an $m\times m$ matrix $A$ is written in the block form  $A=\left[\begin{array}{cc}A_{11}&A_{12}\\A_{21}&A_{22}\end{array}\right]$, where $A_{11}$ is $n\times n$ and $A_{22}$ is $(m-n)\times(m-n).$\\
+Assume that $A$ is nonsingular and has a unique LU factorization.\\
+\begin{enumerate}
+\item Verify the formula
+$$\left[\begin{array}{cc}I& \\-A_{21}A_{11}^{-1}&I\end{array}\right]\left[\begin{array}{cc}A_{11}&A_{12}\\A_{21}&A_{22}\end{array}\right]=\left[\begin{array}{cc}A_{11}&A_{12}\\&A_{22}-A_{21}A_{11}^{-1}A_{12}\end{array}\right]$$
+for "elimination" of the block $A_{21}$. The matrix $A_{22}-A_{21}A_{11}^{-1}A_{12}$ is known as the Schur complement of $A_{11}$ in $A$.\\
+
+Solution:\\
+
+Multiplying the left hand side of the equation using block-multiplication readily verifies the formula:
+$$\left[\begin{array}{cc}I& \\-A_{21}A_{11}^{-1}&I\end{array}\right]\left[\begin{array}{cc}A_{11}&A_{12}\\A_{21}&A_{22}\end{array}\right]=\left[\begin{array}{cc}A_{11}&A_{12}\\-A_{21}A_{11}^{-1}A_{11}+A_{21}&-A_{21}A_{11}^{-1}A_{12}+A_{22}\end{array}\right]$$
+$$=\left[\begin{array}{cc}A_{11}&A_{12}\\-A_{21}+A_{21}&A_{22}-A_{21}A_{11}^{-1}A_{12}\end{array}\right]=\left[\begin{array}{cc}A_{11}&A_{12}\\&A_{22}-A_{21}A_{11}^{-1}A_{12}\end{array}\right]$$
+
+\item Suppose $A_{21}$ is eliminated row by row by means of $n$ steps of Gaussian elimination. Show that the bottom-right $(m-n)\times (m-n)$ block of the result is again the Schur complement.\\
+
+Solution:\\
+
+If $A_{21}$ is eliminated by GE, we must have some lower triangular matrix $L^{-1}$ multiplying the original matrix $A$ on the left. As the only rows that were eliminated were the last $m-n$ rows of $A$, we can express $L^{-1}$ as a block matrix:
+$$L^{-1}=\left[\begin{array}{cc}I&\\C&I\end{array}\right].$$
+Then if we multiply $A$ by $L^{-1}$ we should get some upper triangular block matrix with the first $n$ rows unchanged:
+$$\left[\begin{array}{cc}I&\\C&I\end{array}\right]\left[\begin{array}{cc}A_{11}&A_{12}\\A_{21}&A_{22}\end{array}\right]=\left[\begin{array}{cc}A_{11}&A_{12}\\&S\end{array}\right].$$
+We then solve for $C$:
+$$CA_{11}+A_{21}=0\implies CA_{11}=-A_{21}\implies C=-A_{21}A_{11}^{-1}.$$
+We can then define $S$:
+$$CA_{12}+A_{22}=S\implies -A_{21}A_{11}^{-1}A_{12}+A_{22}=S.$$
+Thus $S$ is the Schur complement, and we are done.
+\end{enumerate}
+\item The matrix $A\in\mathbb{C}^{m\times m}$ is diagonally dominant if
+$$|a_{ii}|>\sum_{j=1,j\neq i}^m|a_{ij}|,\text{   }i=1,2,...,m.$$
+\begin{enumerate}
+\item Prove that if $A$ is diagonally dominant, then any principle submatrix of $A$ is diagonally dominant.\\
+    
+    Solution:\\
+    
+    Any principal submatrix of a diagonally dominant matrix $A$ has diagonal composed of only elements from the diagonal of $A$. Since the principal submatrix has fewer columns than the matrix $A$, the sum above is always going to be, for a principal submatrix, less than or equal to the sum for $A$. Thus any principal submatrix of $A$ must be diagonally dominant.\\
+
+
+\item Prove that if $A$ is diagonally dominant, then $A$ is nonsingular.\\
+
+Solution:\\
+
+We use Gerschgorin disks to prove this conjecture. For $A$ to be nonsingular, it must have all nonzero eigenvalues. We note that each eigenvalue is located within a Gerschgorin disk defined
+$$D_i=\{z|\text{  }|z-a_{ii}|\leq \sum_{j=1,j\neq i}^m|a_{ij}|\}.$$
+We can expand the expression for the disk as such:
+$$-\sum_{j=1,j\neq i}^m|a_{ij}|\leq z-a_{ii}\leq \sum_{j=1,j\neq i}^m|a_{ij}|$$
+$$\implies a_{ii}-\sum_{j=1,j\neq i}^m|a_{ij}|\leq z\leq a_{ii}+\sum_{j=1,j\neq i}^m|a_{ij}|.$$
+Since $A$ is diagonally dominant, $a_{ii}-\sum_{j=1,j\neq i}^m|a_{ij}|>0$ for $a_{ii}>0$ and $a_{ii}+\sum_{j=1,j\neq i}^m|a_{ij}|<0$ for $a_{ii}<0$. Therefore, there can be no zero eigenvalues and $A$ is nonsingular.\\
+
+
+\item Prove that if $A$ is diagonally dominant then it will have an LU decomposition.\\
+
+Solution:\\
+
+Since each principal submatrix, including the upper left $k\times k$ block for each $k$, is diagonally dominant, each block is therefore nonsingular. Thus, by NLA 20.1 $A$ has an LU decomposition.
+\end{enumerate}
+\item lufactor code:
+\begin{lstlisting}
+% Gaussian Elimination with Partial Pivoting
+function [L,U,P]=lufactor(A)
+[~,m]=size(A);
+U=A;
+L=eye(m,m);
+P=eye(m,m);
+for k=1:(m-1)
+    max=abs(U(k,k));
+    maxindex=k;
+    for i=k+1:m
+        if abs(U(i,k))>max
+            max=abs(U(i,k));
+            maxindex=i;
+        end
+    end
+    b=U(k,k:m);
+    U(k,k:m)=U(maxindex,k:m);
+    U(maxindex,k:m)=b;
+    c=L(k,1:(k-1));
+    L(k,1:(k-1))=L(maxindex,1:(k-1));
+    L(maxindex,1:(k-1))=c;
+    d=P(k,1:m);
+    P(k,1:m)=P(maxindex,1:m);
+    P(maxindex,1:m)=d;
+    for j=k+1:m
+        L(j,k)=U(j,k)/U(k,k);
+        U(j,k:m)=U(j,k:m)-L(j,k)*U(k,k:m);
+    end
+end
+\end{lstlisting}
+
+lusolve code:
+\begin{lstlisting}
+function x=lusolve(b,L,U,P)
+[~,m]=size(L);
+ z=P*b;
+
+
+ y=zeros(m,1);
+ x=zeros(m,1);
+
+ for i=1:m
+     y(i)=(z(i)-dot(y,L(i,1:m)))/L(i,i);
+ end
+
+ for k=m:-1:1
+     x(k)=(y(k)-dot(x,U(k,1:m)))/U(k,k);
+ end
+ \end{lstlisting}
+\begin{enumerate} \item LU factorization of $A$.
+\begin{lstlisting}>> A=[2,1,1,0;4,3,3,1;8,7,9,5;6,7,9,8]
+
+A =
+
+     2     1     1     0
+     4     3     3     1
+     8     7     9     5
+     6     7     9     8
+
+>> [L,U,P]=lufactor(A)
+
+L =
+
+    1.0000         0         0         0
+    0.7500    1.0000         0         0
+    0.5000   -0.2857    1.0000         0
+    0.2500   -0.4286    0.3333    1.0000
+
+
+U =
+
+    8.0000    7.0000    9.0000    5.0000
+         0    1.7500    2.2500    4.2500
+         0         0   -0.8571   -0.2857
+         0         0         0    0.6667
+
+
+P =
+
+     0     0     1     0
+     0     0     0     1
+     0     1     0     0
+     1     0     0     0
+
+>> norm(P*A-L*U,2)
+
+ans =
+
+   1.1102e-16
+
+>> P*A
+
+ans =
+
+     8     7     9     5
+     6     7     9     8
+     4     3     3     1
+     2     1     1     0
+
+>> L*U
+
+ans =
+
+    8.0000    7.0000    9.0000    5.0000
+    6.0000    7.0000    9.0000    8.0000
+    4.0000    3.0000    3.0000    1.0000
+    2.0000    1.0000    1.0000    0.0000
+\end{lstlisting}
+\item Using LU factorization to solve $Ax=b$.
+\begin{lstlisting}
+>> A
+
+A =
+
+     2     1     1     0
+     4     3     3     1
+     8     7     9     5
+     6     7     9     8
+
+>> b
+
+b =
+
+     7
+    23
+    69
+    79
+
+>> [L,U,P]=lufactor(A);
+>> x=lusolve(b,L,U,P)
+
+x =
+
+    1.0000
+    2.0000
+    3.0000
+    4.0000
+
+>> A*x
+
+ans =
+
+    7.0000
+   23.0000
+   69.0000
+   79.0000
+
+>> norm(A*x-b,2)
+
+ans =
+
+   1.7764e-15
+   \end{lstlisting}
+   \end{enumerate}
+\end{enumerate}
+\end{document}

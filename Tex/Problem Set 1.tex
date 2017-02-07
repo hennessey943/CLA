@@ -1,0 +1,262 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+
+
+
+%\usepackage[active]{srcltx} % SRC Specials for DVI Searching
+
+% Over-full v-boxes on even pages are due to the \v{c} in author's name
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+
+% THEOREM Environments ---------------------------------------------------
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{prop}[thm]{Proposition}
+ %\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ %\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \numberwithin{equation}{section}
+% MATH -------------------------------------------------------------------
+ \DeclareMathOperator{\RE}{Re}
+ \DeclareMathOperator{\IM}{Im}
+ \DeclareMathOperator{\ess}{ess}
+ \newcommand{\eps}{\varepsilon}
+ \newcommand{\To}{\longrightarrow}
+ \newcommand{\h}{\mathcal{H}}
+ \newcommand{\s}{\mathcal{S}}
+ \newcommand{\A}{\mathcal{A}}
+ \newcommand{\J}{\mathcal{J}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\BOP}{\mathbf{B}}
+ \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+ \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+ \newcommand{\Real}{\mathbb{R}}
+ \newcommand{\Complex}{\mathbb{C}}
+ \newcommand{\Field}{\mathbb{F}}
+ \newcommand{\RPlus}{\Real^{+}}
+ \newcommand{\Polar}{\mathcal{P}_{\s}}
+ \newcommand{\Poly}{\mathcal{P}(E)}
+ \newcommand{\EssD}{\mathcal{D}}
+ \newcommand{\Lom}{\mathcal{L}}
+ \newcommand{\States}{\mathcal{T}}
+ \newcommand{\abs}[1]{\left\vert#1\right\vert}
+ \newcommand{\set}[1]{\left\{#1\right\}}
+ \newcommand{\seq}[1]{\left<#1\right>}
+ \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+ \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Fri Nov 02 10:44:42 2001}
+%TCIDATA{LastRevised=Mon Dec 10 11:56:49 2001}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand\refname{}
+\renewcommand\thefootnote{}
+\textheight=9in \topmargin=-0.6in \everymath{\displaystyle}
+\textwidth=6.5in \oddsidemargin=0.05in
+\renewcommand\arraystretch{1.5}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+\includeonly{}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\everymath{\displaystyle}
+\begin{document}
+
+{\large\bf MATH-6800, CLA: Problem Set 1, 9-17-15}
+
+
+
+\vspace{6 ex}
+
+{\bf Name: Michael Hennessey} \hfill
+
+\vspace{6 ex}
+
+\begin{enumerate}
+\item Let $B$ be a $4\times 4$ matrix to which we apply the following operations:
+    \begin{enumerate}
+    \item Double column 1
+    \item Halve row 3
+    \item Add row 3 to row 1
+    \item Interchange columns 1 and 4
+    \item Subtract row 2 from each of the other rows
+    \item Replace column 4 by column 3
+    \item Delete column 1
+    \end{enumerate}
+    (a) Write the result as a product of 8 matrices\\
+    $$e=\left[\begin{array}{cccc}1&-1&0&0\\0&1&0&0\\0&-1&1&0\\0&-1&0&1\end{array}\right],c=\left[\begin{array}{cccc}1&0&1&0\\0&1&0&0\\0&0&1&0\\0&0&0&1\end{array}\right],b=\left[\begin{array}{cccc}1&0&0&0\\0&1&0&0\\0&0&1/2&0\\0&0&0&1\end{array}\right]$$
+    $$a=\left[\begin{array}{cccc}2&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1\end{array}\right],d=\left[\begin{array}{cccc}0&0&0&1\\0&1&0&0\\0&0&1&0\\1&0&0&0\end{array}\right]
+    ,f=\left[\begin{array}{cccc}1&0&0&0\\0&1&0&0\\0&0&1&1\\0&0&0&0\end{array}\right],g=\left[\begin{array}{ccc}0&0&0\\1&0&0\\0&1&0\\0&0&1\end{array}\right]$$
+    $$ecbBadfg$$
+    (b) Write it again as a product $ABC$\\
+    $$\left[\begin{array}{cccc}1&-1&1/2&0\\0&1&0&0\\0&-1&1/2&0\\0&-1&0&1\end{array}\right]B\left[\begin{array}{ccc}0&0&0\\1&0&0\\0&1&1\\0&0&0\end{array}\right]$$
+
+\item The Pythagorean theorem asserts that for a set of $n$ orthogonal vectors $\{x_i\}$
+$$\norm{\sum_{i=1}^n x_i}^2=\sum_{i=1}^n\norm{x_i}^2$$
+(a) Prove this is the case for $n=2$ by an explicit computation of $\norm{x_1+x_2}^2$.\\
+$$\norm{x_1+x_2}^2=(x_1+x_2)^*(x_1+x_2)=x_1^*x_1+x_1^*x_2+x_2^*x_1+x_2^*x_2$$
+But $x_1\perp x_2$, so $x_1^*x_2=x_2^*x_1=0$. Therefore,
+$$\norm{x_1+x_2}^2=x_1^*x_1+x_2^*x_2=\norm{x_1}^2+\norm{x_2}^2$$
+(b) Show that this computation establishes the general case by induction.\\
+Assume the theorem is true up to $k$ terms. Then,
+$$\norm{\sum_{i=1}^k x_i}^2=(x_1+...+x_k)^*(x_1+...+x_k)=\sum_{i=1}^k\norm{x_i}^2$$
+We check if the theorem holds for $k+1$ terms:
+$$\norm{\sum_{i=1}^{k+1} x_i}^2=(x_1+...+x_k+x_{k+1})^*(x_1+...+x_k+x_{k+1})$$ By induction and orthogonality,
+$$=x_1^*x_1+...+x_k^*x_k+x_{k+1}^*(x_1+...+x_k+x_{k+1})=\norm{x_1}^2+...+\norm{x_k}^2+x_{k+1}^*x_{k+1}=\sum_{i=1}^{k+1}\norm{x_i}^2$$
+\item Let $A\in \mathbb{C}^{m\times m}$ be hermitian ($A^*=A$)\\
+(a) Prove that all eigenvalue are real\\
+\begin{proof} Let $Ax=\lambda x$. Premultiply by $x^*$ to obtain $x^*Ax=\lambda x^*x$. We then take the Hermitian of this equation:
+$$(x^*Ax=\lambda x^*x)^*\implies x^*A^*x=\lambda x^*x$$
+Since $A$ is hermitian, we then have
+$$x^*Ax=\bar{\lambda} x^*x$$
+where $\bar{\lambda}$ is the complex conjugate of $\lambda$. We can then substitute $Ax=\lambda x$ into the equation to get
+$$\lambda x^*x=\bar{\lambda}x^*x\implies\lambda=\bar{\lambda}$$
+Therefore, $\lambda$ must be real-valued.
+\end{proof}\\
+(b) Prove that if $x$ and $y$ are eigenvectors corresponding to distinct eigenvalues, then $x^* y=0$.\\
+\begin{proof} If $x$ and $y$ are eigenvectors corresponding to distinct eigenvalues denoted $\lambda,\mu$ respectively, then we have two equations:
+$$Ax=\lambda x \text{  and  } Ay=\mu y.$$
+Premultiply the first equation by $y^*$ to get
+$$y^*Ax=\lambda y^*x$$
+We then take the hermitian of the equation
+$$(y^*Ax=\lambda y^*x)^*\implies x^*A^*y=\bar{\lambda}x^*y$$
+Since $A$ is hermitian, we can rewrite the equation, then substitute:
+$$x^*A^*y=x^*Ay=\bar{\lambda}x^*y\implies x^*\mu y=\bar{\lambda}x^*y$$
+However, we know that all eigenvalues are real-valued ($\bar{\lambda}=\lambda$) and therefore,
+$$\mu x^*y=\lambda x^* y\implies (\mu-\lambda)x^*y=0$$
+Since we know that $\mu\neq\lambda$, $x^*y=0$.
+\end{proof}
+
+\item If $u$ and $v$ are $m$-vectors, the matrix $A=I+uv^*$ is known as a rank-one perturbation of the identity. Show that if $A$ is nonsingular, then its inverse has the form $A^{-1}=I+\alpha uv^*$ for some scalar $\alpha$, and give an expression for $\alpha$. For what $u$ and $v$ is $A$ singular? If it is singular, what is $null(A)$?\\
+    We check if $AA^{-1}=I$:
+    $$I=AA^{-1}=(I+uv^*)(I+\alpha uv^*)=I+\alpha uv^*+uv^*+\alpha uv^*uv^*$$
+    Since $v^*u$ is a constant, we move it to the front of the last term, subtract $I$ from both sides, and factor $uv^*$:
+    $$0=(\alpha +1+\alpha v^*u)uv^*$$
+    If $uv^*=0$, $A=I\implies A^{-1}=I$. If $uv^*\neq 0$, we get
+    $$0=\alpha +1+\alpha v^*u\implies 0=\alpha(1+v^*u)+1\implies\alpha=\frac{-1}{1+v^*u}$$
+    Therefore, with $\alpha=\frac{-1}{1+v^*u}$ we see that $A^{-1}=I+\alpha uv^*=I-\frac{1}{1+v^*u}uv^*.$\\
+    If $A$ is singular, we know that $A^{-1}$ is undefined. Mathematically speaking, as we have found an expression for $A^{-1}$ with $\alpha=\frac{-1}{1+v^*u}$, if $v^*u=-1$, $\alpha$ becomes undefined. Since $A^{-1}$ is unique for each $u$ and $v$, we choose $u$ and $v$ such that $v^*u=-1$. Then $A$ is singular and
+    $$Au=(I+uv^*)u=u+uv^*u=u-u=0$$
+    Therefore, $null(A)=span\{u\}$.
+\item Prove that if $W$ is an arbitrary nonsingular matrix, the function $\norm{\cdot}_W$ defined by $\norm{x}_W=\norm{Wx}$ is a vector norm.\\
+    \begin{proof} %Since $Wx$ is a vector, let $Wx=v$, then $\norm{x}_W=\norm{Wx}=\norm{v}$. Therefore, $\norm{\cdot}_W$ is a vector norm.
+    To prove that $\norm{\cdot}_W$ is a vector norm, we must show that it holds the three properties:
+    \begin{enumerate}
+    \item $\norm{x}\geq 0$, and $\norm{x}=0$ only if $x=0$
+    \item $\norm{x+y}\leq\norm{x}+\norm{y}$
+    \item $\norm{\alpha x}=\abs{\alpha}\norm{x}$
+    \end{enumerate}
+
+    \begin{enumerate}
+    \item Since the matrix-vector product $Wx$ gives a new vector $z$, we know $$\norm{x}_W=\norm{Wx}=\norm{z}=(\sum_{i=1}^m|z_i|^p)^{1/p}\geq 0$$
+        because each $|z_i|\geq 0$.
+        As $W$ is nonsingular, we also know that $Wx=0\iff x=0$, then
+        $$\norm{x}_W=\norm{Wx}=\norm{z}=0\iff z=0\iff Wx=0\iff x=0.$$
+    \item Following the same logic as (a), we have
+    $$\norm{x+y}_W=\norm{W(x+y)}=\norm{Wx+Wy}=\norm{z+u}$$
+    where $Wx=z$ and $Wy=u$.We then examine two cases: Case (1) - Both $z$ and $u$ have components $z_i$ and $u_i$ that have the same sign for each $i$. Then, $$\norm{z+u}=\norm{z}+\norm{u}.$$ Case (2) - Without loss of generality, choose $z$ to contain at least one negatively valued component in a position where $u$ has a positively valued component. Then,
+    $$\norm{z+u}\leq\norm{u}+\norm{z}.$$
+    \item $$\norm{\alpha x}_W=\norm{W(\alpha x)}=\norm{\alpha Wx}=\norm{\alpha z}=|\alpha|\norm{z}$$
+    \end{enumerate}
+
+\end{proof}
+
+\item Vector and matrix $p$-norms are related by various inequalities, often involving the dimensions $m$ or $n$. For each of the following, verify the inequality and give an example of a nonzero vector or matrix (for general $m,n$) for which equality is achieved. $x\in\mathbb{C}^m,A\in\mathbb{C}^{m\times n}$
+    \begin{enumerate}
+        \item $\norm{x}_\infty\leq\norm{x}_2$\\
+        We can express the infinite norm in a similar manner to the 2-norm: $\norm{x}_\infty=\max{x_i}=x_j=\sqrt{x_j}^2$. Then, $$\norm{x}_2=\sqrt{x_1^2+...+x_j^2+...+x_m^2}\geq\sqrt{x_j^2}=\norm{x}_\infty$$
+        A nonzero vector such that equality is achieved is the vector $x=[\begin{array}{cccccccc} 0&0&...&0&k&0&...&0\end{array}]^T$ where $k$ is an arbitrary constant.
+        $$\norm{x}_\infty=k,\norm{x}_2=\sqrt{k^2}=k$$
+        \item $\norm{x}_2\leq\sqrt{m}\norm{x}_\infty$\\
+        This inequality holds when we expand the 2-norm then divide by $\sqrt{m}$:
+        $$\norm{x}_2=\sqrt{x_1^2+...+x_m^2}$$
+        $$\norm{x}_\infty=\max{x_i}\geq\sqrt{\frac{x_1^2+...+x_m^2}{m}}$$
+        In words, the maximum component is larger than or equal to the root mean square (quadratic mean) of the vector. An example vector such that equality holds is the vector with equally sized components: $x=[\begin{array}{ccc}k&...&k\end{array}]^T.$
+
+        \item $\norm{A}_\infty\leq\sqrt{n}\norm{A}_2$\\
+        Since the infinite norm of $A$ is the maximum row sum of $A$, we can express $\norm{A}_{\infty}$ as $\norm{Ax}_\infty$ where $x$ is the 1-vector in $\mathbb{C}^n$. If we use the same $x$ in the calculation of the 2 norm of $A$, we get
+        $$\norm{Ax}_2=\norm{A}_2\norm{x}_2=\sqrt{n}\norm{A}_2$$
+        By the definition of the induced matrix norm, we can write the infinite norm thus:
+        $$\frac{\norm{Ax}_\infty}{\norm{x}_\infty}\leq C\implies \norm{Ax}_\infty\leq C\norm{x}_\infty\leq C\norm{x}_2$$
+        We know that the maximum row sum ($\norm{A}_\infty$) is going to be less than or equal to the root-square of the row sums ($\norm{A}_2$). However, when we divide the $\norm{A}_2$ by $\sqrt{m}$, we get the quadratic mean of the row sums. Since the maximum row sum must be greater than or equal to the quadratic mean of the row sums, we know:
+        $$\norm{A}_{\infty}\leq\sqrt{n}\norm{A}_2.$$
+        An example matrix such that equality holds is the matrix with one nonzero row with equal entries.
+        \item $\norm{A}_2\leq\sqrt{m}\norm{A}_\infty$\\
+        We show that this inequality holds by expanding both the infinite norm and the 2 norm as row sums:
+        $$\norm{A}_\infty=\max_{1\leq i\leq m}\sum_{k=1}^n a_{ik}$$
+        $$\norm{A}_2=\max_{\norm{x}_2=1}\sqrt{\sum_{i=1}^m|\sum_{k=1}^n a_{ik}x_k|^2}\leq\sqrt{\sum_{i=1}^m|\sum_{k=1}^n a_{ik}|^2}.$$
+        If we divide the last term in the line above by $\sqrt{m}$ we see that the quadratic mean of the row sums is greater than or equal to $\norm{A}_2$. Since the maximum row sum is always larger than or equal to the quadratic mean of row sums, the inequality holds. An example matrix such that equality holds is the matrix with the same entry in each position.
+
+    \end{enumerate}
+\item Let $A\in\mathbb{C}^{m\times n}$ with columns $a_i$ and $B\in\mathbb{C}^{p\times n}$ with columns $b_i$. Show that
+    $$AB^*=a_1b^*_1+...+a_nb^*_n$$
+    in two ways: first using the component-wise definition for the elements of the product of two matrices and secondly using block-matrix multiplication.\\
+
+    Where $a_i$ are the columns of $A$ and $b_i^*$ are the rows of $B^*$, we can see that the $ij$-th entry of $AB^*$ comes from the component-wise definition of the product of two matrices:
+    $$(AB^*)_{ij}=\sum_{k=1}^n a_{ik}b^*_{kj}.$$
+    We can also see, that for each $a_kb^*_k$, the $ij$-th element is defined similarly:
+    $$(a_kb_k^*)_{ij}=a_{ik}b^*_{kj}$$
+    As we sum each rank one matrix, we can clearly see equality:
+    $$\sum_{k=1}^n(a_kb_k^*)_{ij}=\sum_{k=1}^n a_{ik}b^*_{kj}=(AB^*)_{ij}$$
+    We can also use block multiplication to come to the same result:\\
+    We begin by expanding the right side of the original equation into a block matrix.
+    $$\sum_{i=1}^n a_ib_i^*=\sum\left[\begin{array}{c|c} a_ib_i^* & a_ib_i^*\\ \hline a_ib_i^*&a_ib_i^*\end{array}\right]=\left[\begin{array}{c|c}\sum_{i=1}^n a_ib_i^* &\sum_{i=1}^n a_ib_i^*\\ \hline \sum_{i=1}^n a_ib_i^* &\sum_{i=1}^n a_ib_i^*\end{array}\right]$$
+    Now we expand the product $AB^*$ using block multiplication:
+    $$AB^*=\left[\begin{array}{c|c}A_{11}& A_{12}\\ \hline A_{21} & A_{22}\end{array}\right]
+    \left[\begin{array}{c|c}B_{11}^* & B_{12}^*\\ \hline B_{21}^* & B_{22}^*\end{array}\right]=
+    \left[\begin{array}{c|c} A_{11}B_{11}^*+A_{12}B_{21}^* & A_{11}B_{12}^* +A_{12}B_{22}^*\\ \hline A_{21}B_{11}^*+A_{22}B_{21}^* & A_{21}B_{12}^*+A_{22}B_{22}^*\end{array}\right]$$
+    If we denote the $uv$-th block matrix of $AB^*$ as $AB_{uv}$, we see that for each block matrix in the product, we get a sum:
+    $$AB^*_{11}=A_{11}B_{11}^*+A_{12}B_{21}^*=\sum_{i=1}^{n_1}a_ib_i^*+\sum_{i=1}^{n_2}a_ib_i=\sum_{i=1}^n a_ib_i^*\text{ with }a_i\in \mathbb{C}^{m_1},b^*_i\in \mathbb{C}^{p_1}$$
+    $$AB^*_{12}=A_{11}B_{12}^*+A_{12}B_{22}^*=\sum_{i=1}^{n_1}a_ib_i^*+\sum_{i=1}^{n_2}a_ib_i^*=\sum_{i=1}^na_ib_i^*\text{ with }a_i\in \mathbb{C}^{m_1},b^*_i\in \mathbb{C}^{p_2}$$
+    $$AB^*_{21}=A_{21}B_{11}^*+A_{22}B_{21}^*=\sum_{i=1}^{n_1}a_ib_i^*+\sum_{i=1}^{n_2}a_ib_i=\sum_{i=1}^n a_ib_i^*\text{ with }a_i\in \mathbb{C}^{m_2},b^*_i\in \mathbb{C}^{p_1}$$
+    $$AB^*_{22}=A_{21}B_{12}^*+A_{22}B_{22}^*=\sum_{i=1}^{n_1}a_ib_i^*+\sum_{i=1}^{n_2}a_ib_i=\sum_{i=1}^n a_ib_i^*\text{ with }a_i\in \mathbb{C}^{m_2},b^*_i\in \mathbb{C}^{p_2}$$
+    As the dimensions agree, we can clearly see that equality holds:
+    $$AB^*=\left[\begin{array}{c|c} A_{11}B_{11}^*+A_{12}B_{21}^* & A_{11}B_{12}^* +A_{12}B_{22}^*\\ \hline A_{21}B_{11}^*+A_{22}B_{21}^* & A_{21}B_{12}^*+A_{22}B_{22}^*\end{array}\right]=\left[\begin{array}{c|c}\sum_{i=1}^n a_ib_i^* &\sum_{i=1}^n a_ib_i^*\\ \hline \sum_{i=1}^n a_ib_i^* &\sum_{i=1}^n a_ib_i^*\end{array}\right]=\sum_{i=1}^n a_ib_i^*$$
+
+
+
+\end{enumerate}
+
+\end{document} 

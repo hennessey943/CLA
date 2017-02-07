@@ -1,0 +1,246 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+
+
+
+%\usepackage[active]{srcltx} % SRC Specials for DVI Searching
+
+% Over-full v-boxes on even pages are due to the \v{c} in author's name
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+
+% THEOREM Environments ---------------------------------------------------
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{prop}[thm]{Proposition}
+ %\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ %\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \numberwithin{equation}{section}
+% MATH -------------------------------------------------------------------
+ \DeclareMathOperator{\RE}{Re}
+ \DeclareMathOperator{\IM}{Im}
+ \DeclareMathOperator{\ess}{ess}
+ \newcommand{\eps}{\varepsilon}
+ \newcommand{\To}{\longrightarrow}
+ \newcommand{\h}{\mathcal{H}}
+ \newcommand{\s}{\mathcal{S}}
+ \newcommand{\A}{\mathcal{A}}
+ \newcommand{\J}{\mathcal{J}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\BOP}{\mathbf{B}}
+ \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+ \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+ \newcommand{\Real}{\mathbb{R}}
+ \newcommand{\Complex}{\mathbb{C}}
+ \newcommand{\Field}{\mathbb{F}}
+ \newcommand{\RPlus}{\Real^{+}}
+ \newcommand{\Polar}{\mathcal{P}_{\s}}
+ \newcommand{\Poly}{\mathcal{P}(E)}
+ \newcommand{\EssD}{\mathcal{D}}
+ \newcommand{\Lom}{\mathcal{L}}
+ \newcommand{\States}{\mathcal{T}}
+ \newcommand{\abs}[1]{\left\vert#1\right\vert}
+ \newcommand{\set}[1]{\left\{#1\right\}}
+ \newcommand{\seq}[1]{\left<#1\right>}
+ \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+ \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Fri Nov 02 10:44:42 2001}
+%TCIDATA{LastRevised=Mon Dec 10 11:56:49 2001}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand\refname{}
+\renewcommand\thefootnote{}
+\textheight=9in \topmargin=-0.6in \everymath{\displaystyle}
+\textwidth=6.5in \oddsidemargin=0.05in
+\renewcommand\arraystretch{1.5}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+\includeonly{}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\everymath{\displaystyle}
+\begin{document}
+
+{\large\bf MATH-6800, CLA: Problem Set 2, 9-24-15}
+
+
+
+\vspace{6 ex}
+
+{\bf Name: Michael Hennessey} \hfill
+
+\vspace{6 ex}
+
+\begin{enumerate}
+\item Determine SVD's of the matrices:
+    \begin{enumerate}
+    \item $A=\left[\begin{array}{cc}3&0\\0&-2\end{array}\right]$
+    Since $A$ is diagonal, $A^*A=A^2=\left[\begin{array}{cc}9&0\\0&4\end{array}\right]$. Then, we know that the eigenvalues of $A^*A$ are $\lambda_{1,2}=9,4$ which implies that the singular values of $A$ are $\sigma_{1,2}=3,2$. Then $\Sigma=\left[\begin{array}{cc}3&0\\0&2\end{array}\right]$.
+    $$A^*A-9I=\left[\begin{array}{cc}0&0\\0&-5\end{array}\right]\implies v_1=\left[\begin{array}{c}1\\0\end{array}\right]$$
+    $$A^*A-4I=\left[\begin{array}{cc}5&0\\0&0\end{array}\right]\implies v_2=\left[\begin{array}{c}0\\1\end{array}\right]$$
+    Therefore $V^*=\left[\begin{array}{cc}1&0\\0&1\end{array}\right]$. To determine the $u_i$'s, we use the formula $Av_i=\sigma_iu_i$:
+    $$u_1=\left[\begin{array}{cc}3&0\\0&-2\end{array}\right]\left[\begin{array}{c}1\\0\end{array}\right]\frac{1}{3}=\left[\begin{array}{c}1\\0\end{array}\right]$$
+    $$u_2=\left[\begin{array}{cc}3&0\\0&-2\end{array}\right]\left[\begin{array}{c}0\\1\end{array}\right]\frac{1}{2}=\left[\begin{array}{c}0\\-1\end{array}\right]$$
+    Then $U=\left[\begin{array}{cc}1&0\\0&-1\end{array}\right]$. Finally,
+    $$A=U\Sigma V^*=\left[\begin{array}{cc}1&0\\0&-1\end{array}\right]\left[\begin{array}{cc}3&0\\0&2\end{array}\right]\left[\begin{array}{cc}1&0\\0&1\end{array}\right]$$
+    \item $A=\left[\begin{array}{cc}2&0\\0&3\end{array}\right]$
+    $$A^*A=A^2=\left[\begin{array}{cc}4&0\\0&9\end{array}\right]\implies \lambda_{1,2}=9,4\implies \sigma_{1,2}=3,2$$
+    Then, $\Sigma=\left[\begin{array}{cc}3&0\\0&2\end{array}\right]$.
+    $$A^*A-9I=\left[\begin{array}{cc}-5&0\\0&0\end{array}\right]\implies v_1=\left[\begin{array}{c}0\\1\end{array}\right]$$
+    $$A^*A-4I=\left[\begin{array}{cc}0&0\\0&5\end{array}\right]\implies v_2=\left[\begin{array}{c}1\\0\end{array}\right]$$
+    $$V^*=\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$$
+    Since $u_i=Av_i\frac{1}{\sigma_i}$ we see
+    $$u_1=\left[\begin{array}{cc}2&0\\0&3\end{array}\right]\left[\begin{array}{c}0\\1\end{array}\right]\frac{1}{3}=\left[\begin{array}{c}0\\1\end{array}\right]$$
+    $$u_2=\left[\begin{array}{cc}2&0\\0&3\end{array}\right]\left[\begin{array}{c}1\\0\end{array}\right]\frac{1}{2}=\left[\begin{array}{c}1\\0\end{array}\right]$$
+    Then $U=\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$.
+    $$A=U\Sigma V^*=\left[\begin{array}{cc}0&1\\1&0\end{array}\right]\left[\begin{array}{cc}3&0\\0&2\end{array}\right]\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$$
+    \item $A=\left[\begin{array}{cc}0&2\\0&0\\0&0\end{array}\right]$
+    $$A^*A=\left[\begin{array}{ccc}0&0&0\\2&0&0\end{array}\right]\left[\begin{array}{cc}0&2\\0&0\\0&0\end{array}\right]=\left[\begin{array}{cc}0&0\\0&4\end{array}\right]$$
+    Then, $\lambda_{1,2}=4,0\implies\sigma_{1,2}=2,0$. Therefore, $\hat{\Sigma}=\left[\begin{array}{cc}2&0\\0&0\end{array}\right]$.
+    $$A^*A-4I=\left[\begin{array}{cc}-4&0\\0&0\end{array}\right]\implies v_1=\left[\begin{array}{c}0\\1\end{array}\right]$$
+    $$A^*A-0I=\left[\begin{array}{cc}0&0\\0&4\end{array}\right]\implies v_2=\left[\begin{array}{c}1\\0\end{array}\right]$$
+    Then $V^*=\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$. Since $u_i=Av_i\frac{1}{\sigma_i}$ we see
+    $$u_1=\left[\begin{array}{cc}0&2\\0&0\\0&0\end{array}\right]\left[\begin{array}{c}0\\1\end{array}\right]\frac{1}{2}=\left[\begin{array}{c}1\\0\\0\end{array}\right]$$
+    $$\sigma_2=0\implies u_2=null(A)=\left[\begin{array}{c}0\\1\\1\end{array}\right]$$
+    Since we only have two 3-dimensional vectors, we see that we have the reduced SVD version of $U$ denoted $\hat{U}=\left[\begin{array}{cc}1&0\\0&1\\0&1\end{array}\right]$. Therefore, the reduced SVD of A is
+    $$A=\hat{U}\hat{\Sigma}V^*=\left[\begin{array}{cc}1&0\\0&1\\0&1\end{array}\right]\left[\begin{array}{cc}2&0\\0&0\end{array}\right]\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$$
+    We can afix a column of zeroes to the right side of $\hat{U}$ and a row of zeroes to the bottom of $\hat{\Sigma}$ to obtain the full SVD of $A$.
+    \item $A=\left[\begin{array}{cc}1&1\\0&0\end{array}\right]$
+    $$A^*A=\left[\begin{array}{cc}1&0\\1&0\end{array}\right]\left[\begin{array}{cc}1&1\\0&0\end{array}\right]=\left[\begin{array}{cc}1&1\\1&1\end{array}\right]$$
+    The characteristic polynomial of $A^*A$ is $p(\lambda)=\lambda^2-2\lambda$. Then the eigenvalues of $A^*A$ are $\lambda_{1,2}=2,0\implies \sigma_{1,2}=\sqrt{2},0$. Therefore $\Sigma=\left[\begin{array}{cc}\sqrt{2}&0\\0&0\end{array}\right]$.
+    $$A^*A-2I=\left[\begin{array}{cc}-1&1\\1&-1\end{array}\right]\to\left[\begin{array}{cc}1&-1\\0&0\end{array}\right]\implies v_1=\left[\begin{array}{c}1\\1\end{array}\right]$$
+    $$A^*A-0I=\left[\begin{array}{cc}1&1\\1&1\end{array}\right]\to\left[\begin{array}{cc}1&1\\0&0\end{array}\right]\implies v_2=\left[\begin{array}{c}1\\-1\end{array}\right]$$
+    We must normalize this $v_1$ and $v_2$. This results in the matrix $V^*=\left[\begin{array}{cc}1/\sqrt{2}&1/\sqrt{2}\\1/\sqrt{2}&-1/\sqrt{2}\end{array}\right]$.
+    Since $u_i=Av_i\frac{1}{\sigma_i}$ we see
+    $$u_1=\left[\begin{array}{cc}1&1\\0&0\end{array}\right]\left[\begin{array}{c}1/\sqrt{2}\\1/\sqrt{2}\end{array}\right]\frac{1}{\sqrt{2}}=\left[\begin{array}{c}1\\0\end{array}\right]$$
+    $$\sigma_2=0\implies u_2=null(A)=\left[\begin{array}{c}1/\sqrt{2}\\-1/\sqrt{2}\end{array}\right]$$
+    Then $U=\left[\begin{array}{cc}1&1/\sqrt{2}\\0&-1/\sqrt{2}\end{array}\right]$. Therefore,
+    $$A=U\Sigma V^*=\left[\begin{array}{cc}1&1/\sqrt{2}\\0&-1/\sqrt{2}\end{array}\right]\left[\begin{array}{cc}\sqrt{2}&0\\0&0\end{array}\right]\left[\begin{array}{cc}1/\sqrt{2}&1/\sqrt{2}\\1/\sqrt{2}&-1/\sqrt{2}\end{array}\right]$$
+    \end{enumerate}
+\item For $A,B\in\mathbb{C}^{m\times m}$, is it true or false that $A$ and $B$ are unitarily equivalent if and only if they have the same singular values?\\
+    While it is true that unitarily equivalent matrices share the same singular values, we cannot prove that matrices sharing the same singular values are unitarily equivalent. If $A=U\Sigma V^*=QBQ^*$, then solving for $B$ shows that $B$ has an SVD with the same $\Sigma$ as $A$.
+    $$B=Q^*U\Sigma V^*Q=Q^*U\Sigma (Q^*V)^*$$
+    Therefore, unitarily equivalent matrices have the same singular values. However, if we assume only that $A$ and $B$ have the same singular values, then we have $A=U_1\Sigma V_1^*$ and $B=U_2\Sigma V_2^*$. Then, to prove that they are unitarily equivalent, we must show
+    $$A=QBQ^*\iff U_1\Sigma V_1=Q U_2\Sigma V_2^*Q^*=QU_2\Sigma (QV_2)^*\iff QU_2=Q_1\text{ and }QV_2=V_1$$
+    However, in the case of (a) and (b) of exercise 1, we see that we can find two matrices with the same singular values that are not unitarily equivalent becuase the relation above does not hold. Let $A=\left[\begin{array}{cc}1&0\\0&-1\end{array}\right]\left[\begin{array}{cc}3&0\\0&2\end{array}\right]\left[\begin{array}{cc}1&0\\0&1\end{array}\right]$ and $B=\left[\begin{array}{cc}0&1\\1&0\end{array}\right]\left[\begin{array}{cc}3&0\\0&2\end{array}\right]\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$. We see that $A$ and $B$ have the same singular values, but there is no $Q$ such that
+    $$Q\left[\begin{array}{cc}0&1\\1&0\end{array}\right]=\left[\begin{array}{cc}1&0\\0&-1\end{array}\right],\left[\begin{array}{cc}1&0\\0&1\end{array}\right].$$
+    Therefore the claim is false.
+\item Find the maximum and minimum singular values of $A=\left[\begin{array}{cc}1&2\\0&2\end{array}\right]$\\
+    $$A^*=\left[\begin{array}{cc}1&0\\2&2\end{array}\right]$$
+    $$A^*A=\left[\begin{array}{cc}1&0\\2&2\end{array}\right]\left[\begin{array}{cc}1&2\\0&2\end{array}\right]=\left[\begin{array}{cc}1&2\\2&8\end{array}\right]$$
+    We then find the characteristic polynomial of $A^*A$:
+    $$p(\lambda)=(1-\lambda)(8-\lambda)-4=8-9\lambda+\lambda^2-4=\lambda^2-9\lambda+4.$$
+    The roots of this equation are found via the quadratic equation.
+    $$\lambda=\frac{9\pm\sqrt{81-16}}{2}=\frac{9\pm\sqrt{65}}{2}\implies \lambda_1=\frac{9+\sqrt{65}}{2},\lambda_2=\frac{9-\sqrt{65}}{2}$$
+    As the singular values are the positive square roots of the eigenvalues, we see that $\sigma_1=\sqrt{\lambda_1}=\sqrt{\frac{9+\sqrt{65}}{2}}$ and $\sigma_2=\sqrt{\lambda_2}=\sqrt{\frac{9-\sqrt{65}}{2}}$. By the definition of the SVD, $\sigma_1(A)=\sigma_{max}(A)$ and $\sigma_2(A)=\sigma_{min}(A)$.
+\item Consider the matrix $A=\left[\begin{array}{cc}-2&11\\-10&5\end{array}\right]$.
+    \begin{enumerate}
+    \item Determine a real SVD of $A$ in the form $A=U\Sigma V^T$. The SVD is not unique, so find the one with minimal number of minus signs in $U$ and $V$.\\
+        $$A^*A=\left[\begin{array}{cc}-2&-10\\11&5\end{array}\right]\left[\begin{array}{cc}-2&11\\-10&5\end{array}\right]=\left[\begin{array}{cc}104&-72\\-72&146\end{array}\right]$$
+        Then the characteristic polynomial of $A^*A$ is
+        $$p(\lambda)=(104-\lambda)(146-\lambda)-72^2=\lambda^2-250\lambda+10000=(\lambda-200)(\lambda-50)$$
+        The roots are $\lambda_{1,2}=200,50\implies \sigma_{1,2}=10\sqrt{2},5\sqrt{2}$.
+        We then determine the eigenvectors of $A^*A$:
+        $$A^*A-200I=\left[\begin{array}{cc}-96&-72\\-72&-54\end{array}\right]rref\to\left[\begin{array}{cc}1&3/4\\0&0\end{array}\right]\implies x_1=\left[\begin{array}{c}-3/4\\1\end{array}\right]$$
+        $$A^*A-50I=\left[\begin{array}{cc}54&-72\\-72&96\end{array}\right]rref\to\left[\begin{array}{cc}1&-4/3\\0&0\end{array}\right]\implies x_2=\left[\begin{array}{c}4/3\\1\end{array}\right]$$
+        We then normalize $x_1$ and $x_2$ to determine $v_1$ and $v_2$ respectively:
+        $$\norm{x_1}_2=\sqrt{1+9/16}=\sqrt{25/16}=\frac{5}{4}\implies v_1=\frac{x_1}{\norm{x_1}_2}=\left[\begin{array}{c}-3/5\\4/5\end{array}\right]$$
+        $$\norm{x_2}_2=\sqrt{1+16/9}=\sqrt{25/9}=\frac{5}{3}\implies v_2=\frac{x_2}{\norm{x_2}_2}=\left[\begin{array}{c}4/5\\3/5\end{array}\right]$$
+        To find the $u_i$ we use the formula $u_i=Av_i\frac{1}{\sigma_i}$:
+        $$u_1=\left[\begin{array}{cc}-2&11\\-10&5\end{array}\right]\left[\begin{array}{c}-3/5\\4/5\end{array}\right]\frac{1}{10\sqrt{2}}=\left[\begin{array}{c}1/\sqrt{2}\\1/\sqrt{2}\end{array}\right]$$
+        $$u_2=\left[\begin{array}{cc}-2&11\\-10&5\end{array}\right]\left[\begin{array}{c}4/5\\3/5\end{array}\right]\frac{1}{5\sqrt{2}}=\left[\begin{array}{c}1/\sqrt{2}\\-1/\sqrt{2}\end{array}\right]$$
+        Since we have our singular vectors and values, we can construct the SVD as such:
+        $$A=U\Sigma V^*=\left[\begin{array}{cc}1/\sqrt{2}&1/\sqrt{2}\\1/\sqrt{2}&-1/\sqrt{2}\end{array}\right]\left[\begin{array}{cc}10\sqrt{2}&0\\0&5\sqrt{2}\end{array}\right]\left[\begin{array}{cc}-3/5&4/5\\4/5&3/5\end{array}\right].$$
+    \item List the singular values, left singular vectors, and right singular vectors of $A$. Draw a careful, labeled picture of the unit ball in $\mathbb{R}^2$ and its image under $A$, together with the singular vectors, with the coordinates of their vertices marked.\\
+        Singular values are :$\sigma_1=10\sqrt{2},\sigma_2=5\sqrt{2}$\\
+        Left singular vectors are: $u_1=\left[\begin{array}{c}1/\sqrt{2}\\1/\sqrt{2}\end{array}\right],u_2=\left[\begin{array}{c}1/\sqrt{2}\\-1/\sqrt{2}\end{array}\right]$.\\
+        Right singular vectors are: $v_1=\left[\begin{array}{c}-3/5\\4/5\end{array}\right],v_2=\left[\begin{array}{c}4/5\\3/5\end{array}\right].$\\
+        See attached for picture.
+    \item What are the $1-,2-,\infty-$, and Frobenius norms of $A$?\\
+        The 1-norm of $A$ is the maximal column sum:
+        $$\norm{A}_1=11+5=16.$$
+        The 2-norm of $A$ is the maximal singular value:
+        $$\norm{A}_2=\sigma_1=10\sqrt{2}.$$
+        The $\infty$-norm of $A$ is the maximal row sum:
+        $$\norm{A}_\infty=|-10|+5=15.$$
+        The Frobenius norm of $A$ is the 2-norm of the $4$-dimensional vector whose entries are the entries of $A$:
+        $$\norm{A}_F=\sqrt{(-2)^2+11^2+(-10)^2+5^2}=\sqrt{250}=5\sqrt{10}.$$
+    \item Find $A^{-1}$ via the SVD\\
+        Note $U^*=U^{-1},V^*=V^{-1}$.
+        $$A^{-1}=(U\Sigma V^*)^{-1}=(V^{-1})^*\Sigma^{-1}U^{-1}=V\Sigma^{-1}U^*$$
+        As $\Sigma$ is a diagonal matrix, we simply raise its entries to the -1 power and see
+        $$A^{-1}=\left[\begin{array}{cc}-3/5&4/5\\4/5&3/5\end{array}\right]\left[\begin{array}{cc}1/10\sqrt{2}&0\\0&1/5\sqrt{2}\end{array}\right]\left[\begin{array}{cc}1/\sqrt{2}&1/\sqrt{2}\\1/\sqrt{2}&-1/\sqrt{2}\end{array}\right]
+        =\left[\begin{array}{cc}1/20&-11/100\\1/10&-1/50\end{array}\right].$$
+    \item Find the eigenvalues of $A$.
+        $$|A-\lambda I|=0\implies \left|\begin{array}{cc}-2-\lambda&11\\-10&5-\lambda\end{array}\right|=0$$
+        $$\implies(-2-\lambda)(5-\lambda)+110=0\implies\lambda^2-3\lambda+100=0$$
+        $$\implies \lambda=\frac{3\pm\sqrt{9-400}}{2}=\frac{3\pm i\sqrt{391}}{2}$$
+        $$\lambda_1=\frac{3+i\sqrt{391}}{2},\lambda_2=\frac{3-i\sqrt{391}}{2}$$
+    \item Verify that $\det A=\lambda_1\lambda_2$ and $|\det A|=\sigma_1\sigma_2$.\\
+        $$\det A=-2*5-(11)(-10)=-10+110=100$$
+        $$\lambda_1\lambda_2=\frac{3+i\sqrt{391}}{2}\frac{3-i\sqrt{391}}{2}=\frac{1}{4}(9-i^2 391)=\frac{400}{4}=100$$
+        $$\sigma_1\sigma_2=10\sqrt{2}\cdot5\sqrt{2}=50\cdot2=100$$
+    \item What is the area of the ellipsoid onto which $A$ maps the unit ball of $\mathbb{R}^2$?\\
+    The area of an ellipsoid is given by $\pi$ times the length of the major and minor semi-axes.
+    $$A_{ellipsoid}=\pi\sigma_1\sigma_2=100\pi$$
+
+    \end{enumerate}
+\item Use the SVD to show that if $A\in\mathbb{C}^{m\times n}$ has rank $n$, then
+$$\norm{A(A^*A)^{-1}A^*}_2=1.$$
+Let $A=U\Sigma V^*$ and substitute into the norm:
+$$\norm{A(A^*A)^{-1}A^*}_2=\norm{U\Sigma V^*(V\Sigma^*U^*U\Sigma V^*)^{-1}V\Sigma^*U^*}_2=\norm{U\Sigma V^*(V\Sigma^*\Sigma V^*)^{-1}V\Sigma^* U^*}_2$$
+$$=\norm{U\Sigma V^*V(\Sigma^*\Sigma)^{-1}V^*V\Sigma^*U^*}_2=\norm{U\Sigma(\Sigma^*\Sigma)^{-1}\Sigma^*U^*}_2$$
+Since $rank(A)=n$, we know that $m\geq n$ and that $\Sigma$ is of the form :
+$$\Sigma=\left[\begin{array}{c}\hat{\Sigma}\\ \hline 0\end{array}\right]$$
+Then, $\Sigma^*\Sigma=\hat{\Sigma}^2$. Therefore $(\Sigma^*\Sigma)^{-1}=diag(1/(\sigma_1\bar{\sigma}_1),1/(\sigma_2\bar{\sigma}_2),...,1/(\sigma_n\bar{\sigma}_n)$. When we multiply this term by $\Sigma$ on the left and $\Sigma^*$ on the right, we get the $n\times n$ identity matrix with $m-n$ rows and columns of zeroes appended to the right and bottom of it:
+$$\Sigma(\Sigma^*\Sigma)^{-1}\Sigma^*=\left[\begin{array}{c|c}I& 0\\ \hline 0&0\end{array}\right]\in\mathbb{C}^{m\times m}.$$
+
+However, when we multiply $U$ by this matrix, we truncate it! When we multiply the truncated $U$ with $U^*$ we only get the diagonal matrix whose entries are the squares of the inner products of the truncated rows from $U$ and the full-component columns of $U^*$. Since $U$ is unitary and thus its rows are orthonormal, we know that each of these inner products must be less than or equal to one. To prove that the 2-norm is equal to 1, we only need one of these inner products to be equal to one. However, this does not seem to be provable in the general case of $m>n.$ If $m=n$, then clearly we are taking the 2-norm of the identity and have equality.
+
+
+\end{enumerate}
+
+\end{document} 

@@ -1,0 +1,270 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+
+
+
+%\usepackage[active]{srcltx} % SRC Specials for DVI Searching
+
+% Over-full v-boxes on even pages are due to the \v{c} in author's name
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+
+% THEOREM Environments ---------------------------------------------------
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{prop}[thm]{Proposition}
+ %\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ %\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \numberwithin{equation}{section}
+% MATH -------------------------------------------------------------------
+ \DeclareMathOperator{\RE}{Re}
+ \DeclareMathOperator{\IM}{Im}
+ \DeclareMathOperator{\ess}{ess}
+ \newcommand{\eps}{\varepsilon}
+ \newcommand{\To}{\longrightarrow}
+ \newcommand{\h}{\mathcal{H}}
+ \newcommand{\s}{\mathcal{S}}
+ \newcommand{\A}{\mathcal{A}}
+ \newcommand{\J}{\mathcal{J}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\BOP}{\mathbf{B}}
+ \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+ \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+ \newcommand{\Real}{\mathbb{R}}
+ \newcommand{\Complex}{\mathbb{C}}
+ \newcommand{\Field}{\mathbb{F}}
+ \newcommand{\RPlus}{\Real^{+}}
+ \newcommand{\Polar}{\mathcal{P}_{\s}}
+ \newcommand{\Poly}{\mathcal{P}(E)}
+ \newcommand{\EssD}{\mathcal{D}}
+ \newcommand{\Lom}{\mathcal{L}}
+ \newcommand{\States}{\mathcal{T}}
+ \newcommand{\abs}[1]{\left\vert#1\right\vert}
+ \newcommand{\set}[1]{\left\{#1\right\}}
+ \newcommand{\seq}[1]{\left<#1\right>}
+ \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+ \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Fri Nov 02 10:44:42 2001}
+%TCIDATA{LastRevised=Mon Dec 10 11:56:49 2001}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand\refname{}
+\renewcommand\thefootnote{}
+\textheight=9in \topmargin=-0.6in \everymath{\displaystyle}
+\textwidth=6.5in \oddsidemargin=0.05in
+\renewcommand\arraystretch{1.5}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+\includeonly{}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{multicol}
+\usepackage[bw]{mcode}
+\usepackage{listings}
+\everymath{\displaystyle}
+
+\begin{document}
+
+{\large\bf MATH-6800, Problem Set 3, 10-1-15}
+
+
+
+\vspace{6 ex}
+
+{\bf Name: Michael Hennessey} \hfill
+
+\vspace{6 ex}
+
+\begin{enumerate}
+\item Let $P\in \mathbb{C}^{m\times m}$ be a nonzero projector. Show that $\norm{P}_2\geq 1$, with equality if and only if $P$ is an orthogonal projector.\\
+
+    \begin{proof}
+    $\Rightarrow$ If $P$ is orthogonal, we can write it in the form $P=Q^*\Sigma Q$ where $Q$ is unitary and $\Sigma$ is diagonal with entries $\sigma_{ii}=1\text{ or }0$. Then, by the properties of the 2-norm:
+    $$\norm{P}_2=\norm{Q^*\Sigma Q}_2=\norm{\Sigma}_2=1.$$
+    $\Leftarrow$ We begin by showing that $\norm{P}_2>1$ for oblique $P$.\\
+ Let $v=x+\lambda a$ with $x=Pv,\lambda a=(I-P)v$. We choose $x$ and $a$ such that $\norm{x}_2=\norm{a}_2=1$. Therefore, we are choosing $\norm{Pv}_2=1$. Now, we attempt to minimize $\norm{v}_2$ in order to maximize the 2-norm of $P$.
+    $$\norm{v}_2^2=\norm{x+\lambda a}^2_2=(x+\lambda a)^*(x+\lambda a)=x^*x+2\lambda x^*a+\lambda^2 a^*a$$
+    $$=\norm{x}_2^2+\lambda^2\norm{a}^2_2+2\lambda x^*a=1+\lambda^2+2\lambda x^*a$$
+    If we choose $\lambda=-x^*a$, we get $\norm{v}_2<1$:
+    $$\norm{v}_2^2=1+|x^*a|^2-2|x^*a|^2=1-|x^*a|^2.$$
+    Since $P$ is oblique, $x^*a\neq 0$, and
+    $$\norm{v}_2^2=1-|x^*a|^2<1\implies \norm{v}_2<1.$$
+    Thus
+    $$\norm{P}_2 =max_{\norm{y}\neq 0}\frac{\norm{Py}_2}{\norm{y}_2}\geq\frac{\norm{Pv}_2}{\norm{v}_2}>1.$$
+    However, if $P$ is orthogonal, we know $x^*a=0$, then $\norm{v}_2=1$. Then,
+    $$\norm{P}_2=max_{\norm{y}_2\neq0}\frac{\norm{Py}_2}{\norm{y}_2}\geq\frac{\norm{Pv}_2}{\norm{v}_2}=1.$$
+    Therefore, if $\norm{P}_2=1$, $P$ must be orthogonal.
+    \end{proof}
+    \pagebreak
+\item Consider the matrices
+$$A=\left[\begin{array}{cc} 1&0\\0&1\\1&0\end{array}\right],B=\left[\begin{array}{cc}1&2\\0&1\\1&0\end{array}\right]$$
+    \begin{enumerate}
+    \item Using any method, determine a reduced QR factorization $A=\hat{Q}\hat{R}$ and a full QR factorization $A=QR$.
+        $$r_{11}=\sqrt{1^2+0^2+1^2}=\sqrt{2}\implies q_1=\left[\begin{array}{c}1/\sqrt{2}\\0\\1/\sqrt{2}\end{array}\right]$$
+        $$r_{12}=\left[\begin{array}{ccc}1/\sqrt{2}&0&1/\sqrt{2}\end{array}\right]\left[\begin{array}{c}0\\1\\0\end{array}\right]=0$$
+        $$r_{22}=\norm{a_2-r_{12}q_1}_2=\norm{a_2}_2=1\implies q_2=\left[\begin{array}{c}0\\1\\0\end{array}\right]$$
+        $$A=\hat{Q}\hat{R}=\left[\begin{array}{cc}1/\sqrt{2}&0\\0&1\\1/\sqrt{2}&0\end{array}\right] \left[\begin{array}{cc}\sqrt{2}&0\\0&1\end{array}\right]$$
+        To find $A=QR$ we must find $q_3=[q_x,q_y,q_z]^T$ orthogonal to $q_1,q_2$:
+        $$q_1^*q_3=0\implies q_x=-q_z$$
+        $$q_2^*q_3=0\implies q_y=0$$
+        Then,
+        $$q_3=\left[\begin{array}{c}1/\sqrt{2}\\0\\-1/\sqrt{2}\end{array}\right]$$
+        $$A=QR=\left[\begin{array}{ccc}1/\sqrt{2}&0&1/\sqrt{2}\\0&1&0\\1/\sqrt{2}&0&-1/\sqrt{2}\end{array}\right] \left[\begin{array}{cc}\sqrt{2}&0\\0&1\\0&0\end{array}\right]$$
+    \item Determine reduced and full QR factorizations $B=\hat{Q}\hat{R}$ and $B=QR$.
+        $$r_{11}=\sqrt{1^2+0^2+1^2}=\sqrt{2}\implies q_1=\left[\begin{array}{c}1/\sqrt{2}\\0\\1/\sqrt{2}\end{array}\right]$$
+        $$r_{12}=\left[\begin{array}{ccc}1/\sqrt{2}&0&1/\sqrt{2}\end{array}\right]\left[\begin{array}{c}2\\1\\0\end{array}\right]=\sqrt{2}$$
+        $$r_{22}=\norm{\left[\begin{array}{c}2\\1\\0\end{array}\right]-\sqrt{2}\left[\begin{array}{c}1/\sqrt{2}\\0\\1/\sqrt{2}\end{array}\right]}_2=\norm{\left[\begin{array}{c}1\\1\\-1\end{array}\right]}_2=\sqrt{3}$$
+        $$\implies q_2=\frac{1}{\sqrt{3}}\left[\begin{array}{c}1\\1\\-1\end{array}\right]=\left[\begin{array}{c}1/\sqrt{3}\\1/\sqrt{3}\\-1/\sqrt{3}\end{array}\right]$$
+        $$B=\hat{Q}\hat{R}=\left[\begin{array}{cc}1/\sqrt{2}&1/\sqrt{3}\\0&1/\sqrt{3}\\1/\sqrt{2}&-1/\sqrt{3}\end{array}\right]\left[\begin{array}{cc}\sqrt{2}&\sqrt{2}\\0&\sqrt{3}\end{array}\right]$$
+        To find $B=QR$ we must find $q_3=[q_x,q_yq_z]^T$ orthogonal to $q_1,q_2$. We solve the matrix equation
+        $$\left[\begin{array}{ccc}1&0&1\\1&1&-1\end{array}\right]\left[\begin{array}{c}q_x\\q_y\\q_z\end{array}\right]=0$$
+        We then get
+        $$\tilde{q_3}=\left[\begin{array}{c}-1\\2\\1\end{array}\right]\implies q_3=\left[\begin{array}{c}-1/\sqrt{6}\\2/\sqrt{6}\\1/\sqrt{6}\end{array}\right]$$
+        Then
+        $$B=QR=\left[\begin{array}{ccc}1/\sqrt{2}&1/\sqrt{3}&-1/\sqrt{6}\\0&1/\sqrt{3}&2/\sqrt{6}\\1/\sqrt{2}&-1/\sqrt{3}&1/\sqrt{6}\end{array}\right]$$
+    \end{enumerate}
+\item Let $A$ be an $m\times n$ matrix ($m\geq n$), and let $A=\hat{Q}\hat{R}$ be a reduced QR factorization.
+    \begin{enumerate}
+    \item Show that $A$ has rank $n$ if and only if all the diagonal entries of $\hat{R}$ are nonzero.\\
+
+        \begin{proof} $\Rightarrow$ If $A$ has rank $n$, $r_{jj}>0$ by Theorem 7.2.\\
+        $\Leftarrow$ We begin by looking at the matrix equation $Ax=0$ to determine the dimension of the null space of $A$. We then factor $A$ to get
+        $$QRx=0.$$
+        We then multiply both sides of the equation by $Q^*$ to get
+        $$Rx=0.$$
+        We can then solve this equation by back substitution. Since all diagonal elements of $R$ are nonzero, we know that the dimension of the null space of $A$ is zero. Therefore, the rank of $A$ is $n$.
+        \end{proof}
+        %If all diagonal entries of $\hat{R}$ are nonzero, then we have $n$ nonzero columns of $\hat{Q}$. To show that $rank(A)=n$, we show that $A$ has $n$ independent columns. If $A$ has $n$ independent columns, $\sum_{j=1}^n\alpha_j a_j=0\iff \alpha_j=0$. Taking the inner product with each $q_i$ yields $\alpha_i r_{ii}=0\implies \alpha_i=0$. Therefore, all $a_j$ are independent and $rank(A)=n$. \end{proof}
+    \item Suppose $\hat{R}$ has $k$ nonzero diagonal entries for some $k$ with $0\leq k<n$. What does this imply about the rank of $A$?\\
+
+        $rank(A)\geq k$\\
+        \begin{proof}
+        Following the same logic as the proof above, the number of independent columns of $A$ can be determined by the null space of $A$.
+        $$Ax=0\implies QRx=0\implies Rx=0$$
+        Since $R$ has $k$ nonzero diagonal entries, we know that the dimension of the null space of $A$ can be equal to $n-k$. Thus A would have $n-(n-k)=k$ independent columns.
+        We look at the matrix
+        $$A=\left[\begin{array}{cc}0&1\\0&0\end{array}\right]$$. We know $rank(A)=1$, but $r_{11}=r_{22}=0$. Therefore, $rank(A)\geq k$.
+        \end{proof}
+        \end{enumerate}
+\item Write matlab functions $[Qc,Rc]=clgs(A)$ and $[Qm,Rm]=mgs(A)$ that implement the reduced QR factorization using the classical Gram-Schmidt and modified Gram-Schmidt algorithms, respectively. Test the implementations by computing the QR factorization for the $m\times m$ Vandermonde matrix for points $x_i\equiv(i-1)/(m-1)$, and compare the results from the built-in Matlab function $[Q,R]=qr(A).$
+    \begin{enumerate} \item For $m=5$, compute $\norm{A-QR}_2$ for each approximation. Also compute the 2-norm differences $\norm{Q_i-Q}_2,\norm{R_i-R}_2$ for $i=c$ and $i=m$, and also compute the error $\norm{Q^*Q-I}_2$ for each approximation to $Q$.
+    \item Repeat (a), but with $m=100$.
+    \end{enumerate}
+    In order to compute the norms we use the algorithms below:
+    \begin{lstlisting}
+    %Vandermonde Matrix creator
+function [Vm]=Vandermonde(m)
+for i=1:m
+    x(i)=(i-1)/(m-1);
+    for j=1:m
+        Vm(i,j)=x(i)^(j-1);
+    end
+end
+\end{lstlisting}
+\begin{lstlisting}
+
+
+function [Qm,Rm]=mgs(A)
+%Modified Gram-Schmidt
+%Compute the reduced QR factorization
+
+[m,n]=size(A);
+Rm=zeros(n,n);
+Qm=zeros(m,n);
+I=1:m;
+for i=1:n
+    v(I,i)=A(I,i); %column i
+end
+for i=1:n
+    Rm(i,i)=norm(v(I,i),2);
+    Qm(I,i)=v(I,i)/Rm(i,i);
+    for j=(i+1):n
+        Rm(i,j)=dot(Qm(I,i),v(I,j));
+        v(I,j)=v(I,j)-Rm(i,j)*Qm(I,i);
+    end
+end
+
+\end{lstlisting}
+\begin{lstlisting}
+
+function [Qc,Rc]=clgs(A)
+%classical G-S
+% Compute the reduced QR factorization
+
+[m,n]=size(A); %dimensions of A
+Rc=zeros(n,n);
+Qc=zeros(m,n);
+I=1:m; %q0 index range 1,2,...,m
+for j=1:n
+    vj=A(I,j); %column j
+    for i=1;(j-1);
+        Rc(i,j)=dot(Qc(I,i),A(I,j));
+        vj=vj-Rc(i,j)*Qc(I,i);
+    end
+    Rc(j,j)=norm(vj,2); %2-norm
+    Qc(I,j)=vj/Rc(j,j);
+end
+\end{lstlisting}
+\begin{lstlisting}
+function [Qp,Rp]=qr_plus(Q,R)
+%make all diagonal elements of R and corresponding columns of Q positive
+
+[m,m]=size(R);
+I=1:m;
+for i=1:m
+        if R(i,i)<0
+            Rp(i,I)=-1*R(i,I);
+            Qp(I,i)=-1*Q(I,i);
+        else
+            Rp(i,I)=R(i,I);
+            Qp(I,i)=Q(I,i);
+        end
+end
+\end{lstlisting}
+See attached printouts for computations.
+
+\end{enumerate}
+\end{document} 

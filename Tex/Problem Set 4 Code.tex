@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+
+
+
+%\usepackage[active]{srcltx} % SRC Specials for DVI Searching
+
+% Over-full v-boxes on even pages are due to the \v{c} in author's name
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+
+% THEOREM Environments ---------------------------------------------------
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{prop}[thm]{Proposition}
+ %\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ %\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \numberwithin{equation}{section}
+% MATH -------------------------------------------------------------------
+ \DeclareMathOperator{\RE}{Re}
+ \DeclareMathOperator{\IM}{Im}
+ \DeclareMathOperator{\ess}{ess}
+ \newcommand{\eps}{\varepsilon}
+ \newcommand{\To}{\longrightarrow}
+ \newcommand{\h}{\mathcal{H}}
+ \newcommand{\s}{\mathcal{S}}
+ \newcommand{\A}{\mathcal{A}}
+ \newcommand{\J}{\mathcal{J}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\BOP}{\mathbf{B}}
+ \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+ \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+ \newcommand{\Real}{\mathbb{R}}
+ \newcommand{\Complex}{\mathbb{C}}
+ \newcommand{\Field}{\mathbb{F}}
+ \newcommand{\RPlus}{\Real^{+}}
+ \newcommand{\Polar}{\mathcal{P}_{\s}}
+ \newcommand{\Poly}{\mathcal{P}(E)}
+ \newcommand{\EssD}{\mathcal{D}}
+ \newcommand{\Lom}{\mathcal{L}}
+ \newcommand{\States}{\mathcal{T}}
+ \newcommand{\abs}[1]{\left\vert#1\right\vert}
+ \newcommand{\set}[1]{\left\{#1\right\}}
+ \newcommand{\seq}[1]{\left<#1\right>}
+ \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+ \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Fri Nov 02 10:44:42 2001}
+%TCIDATA{LastRevised=Mon Dec 10 11:56:49 2001}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand\refname{}
+\renewcommand\thefootnote{}
+\textheight=9in \topmargin=-0.6in \everymath{\displaystyle}
+\textwidth=6.5in \oddsidemargin=0.05in
+\renewcommand\arraystretch{1.5}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+\includeonly{}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{multicol}
+\usepackage[bw]{mcode}
+\usepackage{listings}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\begin{lstlisting}
+function [W,R]=house(A)
+%householder algorithm
+[m,n]=size(A);
+
+for k=1:n
+    I=k:m;
+    x=A(k:m,k);
+    e=zeros(m-k+1,1);
+    e(1)=1;
+    if x(1)==0
+        V(I,k)=norm(x,2)*e+x;
+    else
+        V(I,k)=sign(x(1))*norm(x,2)*e+x;
+    end
+    V(I,k)=V(I,k)/norm(V(I,k),2);
+    A(k:m,k:n)=A(k:m,k:n)-2*V(I,k)*(V(I,k)'*A(k:m,k:n));
+end
+W=V;
+R=A(1:n,1:n);
+\end{lstlisting}
+
+\begin{lstlisting}
+function Q=formQ(W)
+
+[m,n]=size(W);
+
+for i=1:n
+    x=zeros(m,1);
+    x(i)=1;
+    for k=n:-1:1
+        x(k:m)=x(k:m)-2*W(k:m,k)*(W(k:m,k)'*x(k:m));
+
+    end
+    Q(1:m,i)=x;
+end
+\end{lstlisting}
+
+\begin{lstlisting}
+function [Vmn,b]=newVandermonde(m,n)
+%create an mxn vandermonde matrix with
+%input points uniformly spaced from 0 to 1
+b=zeros(m,1);
+t=zeros(m,1);
+Vmn=zeros(m,n);
+for i=1:m
+    t(i)=i*.02;
+    for j=1:n
+        Vmn(i,j)=t(i)^(j-1);
+    end
+    b(i)=cos(4*t(i));
+end
+\end{lstlisting}
+\pagebreak
+\begin{lstlisting}
+function [xa,xb,xc,xd,xe,xf,xg]=leastSquaresSolver(A,b)
+[m,n]=size(A);
+%Normal Equations
+
+B=A'*A;
+R=chol(B);
+w=R'^(-1)*A'*b;
+xa=R^(-1)*w;
+
+
+%QR factorization and Classical Gram-Schmidt
+
+[Qc,Rc]=clgs(A);
+xb=Rc^(-1)*Qc'*b;
+
+%QR factorization and Modified Gram-Schmidt
+
+[Qm,Rm]=mgs(A);
+xc=Rm^(-1)*Qm'*b;
+
+%QR factorization and Householder triangularization
+
+[Qh,Rh]=house(A);
+xd=Rh^(-1)*Qh'*b;
+
+%QR factorization and Matlab qr
+
+[Q,R]=qr(A,0);
+xe=R^(-1)*Q'*b;
+
+%Matlab backslash
+
+xf=A\b;
+
+%Matlab SVD
+
+[U,S,V]=svd(A,0);
+y=S^(-1)*U'*b;
+xg=V*y;
+
+fprintf('    Normal                CLGS                    MGS                   HOUSE\n');
+for i=1:n
+    fprintf(' %22.15e %22.15e %22.15e %22.15e\n', xa(i),xb(i),xc(i),xd(i))
+end;
+
+fprintf('    Matlab QR             Matlab backslash        SVD\n');
+for i=1:n
+    fprintf(' %22.15e %22.15e %22.15e\n',xe(i),xf(i),xg(i))
+end;
+\end{lstlisting}
+\end{document}
